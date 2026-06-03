@@ -1,120 +1,425 @@
+
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Universities</title>
-	</head>
-	
-	<body style ="background-color: grey;">
-		<style>
-			.center-text {
-				text-align: center;} 
-			body {
-			background-color: grey;
-			}
-		</style>
-		
-		<h1 class="center-text"> University Choices</h1>
-		<h2> High Reach </h2>
-		<hr style="height: 2px; background: black; border: none;">
-		
-			<h3>Carnegie Mellon University</h3>
-			<h4>Degree: Ph. D. in Machine Learning</h4>
-			<h5>potential interest in Statistics/Machine Learning Joint Ph.D. Degree </h5>
-			
-			<h4>Research Faculty:</h4>
-			<ul>
-				<li>Ann B Lee, <a href="https://www.stat.cmu.edu/~annlee/"> Machine Learning for Science</a> </li>
-				<li>Tim Dettmers, <a href="https://timdettmers.com/about/"> AI Agents </a> </li>
-				<li>Ameet Talwalkar, <a href="https://www.cs.cmu.edu/~atalwalk/"> AI for Science & AI Agents</a></li>
-			</ul>
-			<a href="https://ml.cmu.edu/people/core-faculty"> Professors list for Machine Learning </a>
-			
-			<h4>Applications Open: September 9, 2026 </h4>
-			<h4>Early Application Deadline: November 18, 2026 </h4>
-			<h4>Final Application Deadline: December 9, 2026 </h4>
-			<h4>Requirements:  </h4>
-				<ul>
-					<li>Resume/CV </li>
-					<li>Three Letters of Recommendation</li>
-					<li>SOP 2 page maximum </li>
-				</ul>
-			<h4>Application Fee: $100</h4>
-		<hr/>
-		
-		
-			<h3>Massachusetts Institute of Technology</h3>
-			<h4>Degree: Ph. D. in Electrical Engineering and Computer Science</h4>
-			<ul>
-				<li>placeholder <a href="https://serinachang5.github.io/"> AI for Science</a> </li>
-				<li>placeholder <a href="https://people.eecs.berkeley.edu/~pabbeel/"> Deep and Reinforcement Learning </a> </li>
-				<li>placeholder <a href="https://people.eecs.berkeley.edu/~kanazawa/"> Computer Vision</a></li>
-			</ul>
-			<h4>Applications Open: September 15, 2026 </h4>
-			<h4>Application Deadline: December 1, 2026 </h4>
-			<h4>Requirements:  </h4>
-				<ul>
-					<li>Bachelor's Degree</li>
-					<li>Three letters of recommendation</li>
-					<li>2 essays: <ul>
-						<li> 1) Research Activities and Goals </li> 
-						<li> 2) Academic and Intellectual Journey </li>
-						</ul>
-					
-				</ul>
-			<a href="https://mitcommlab.mit.edu/eecs/commkit/graduate-school-statement-of-purpose/"> Information for writing the essays </a><br>
-			 
-			<a href="https://gradapply.mit.edu/eecs/apply/login/?next=/eecs/"> Application Portal </a>
-			
-			<h4>Application Fee: $90</h4>
-			
-		<hr/>
-		
+<head>
+    <title>Universities</title>
 
-			<h3>University of California, Berkeley</h3>
-			<h4>Degree: Ph. D in Computer Science (AI)</h4>
-			<h4>Research Faculty:</h4>
-			<ul>
-				<li>Serina Chang, <a href="https://serinachang5.github.io/"> AI for Science</a> </li>
-				<li>Pieter Abbeel, <a href="https://people.eecs.berkeley.edu/~pabbeel/"> Deep and Reinforcement Learning </a> </li>
-				<li>Angjoo Kanazawa, <a href="https://people.eecs.berkeley.edu/~kanazawa/"> Computer Vision</a></li>
-			</ul>
-			<a href="https://bair.berkeley.edu/resources/admissions"> Researchers and their areas in AI specifically </a>
-			<h4>Applications Open: September 2026 </h4>
-			<h4>Deadline: December 1, 2026 </h4>
-			<h4>Requirements:  </h4>
-				<ul>
-					<li>Bachelor's Degree</li>
-					<li>Minimum GPA of 3.0 </li>
-					<li>Three Letters of Recommendation</li>
-					<li>Resume/CV </li>
-				</ul>
-				<h4>Application Fee: $135</h4>
-		<hr/>
-		
-		<h2> High-Mid Reach </h2>
-		<hr style="height: 2px; background: black; border: none;">
-			<h3>Cornell University</h3>
-			<h4>Degree: </h4>
-		
-		<hr/>
-			<h3>University of California, San Diego</h3>
-			<h4>Degree: </h4>
-		<hr/>
-			<h3>California Institute of Technology</h3>
-			<h4>Degree: </h4>
-		<hr/>
-			<h3>Columbia University</h3>
-			<h4>Degree: </h4>
-		<hr/>
-			<h3>University of Texas at Austin</h3>
-			<h4>Degree: </h4>
-		<hr/>
-			<h3>Georgia Institute of Technology</h3>
-			<h4>Degree: </h4>
-		<hr/>
-			<h3>University of Wisconsin–Madison</h3>
-			<h4>Degree: </h4>
-		<hr/>
+    <style>
+        body {
+            background-color: grey;
+            font-family: Arial, sans-serif;
+        }
 
-	</body>
+        .center-text {
+            text-align: center;
+        }
+
+        .tab-buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .tab-buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .tab-buttons button:hover {
+            background-color: lightgray;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="center-text">University Choices</h1>
+
+    <div class="tab-buttons">
+        <button onclick="showTab('highreach')">High Reach</button>
+        <button onclick="showTab('highmid')">High-Mid Reach</button>
+        <button onclick="showTab('mid')">Mid Reach</button>
+        <button onclick="showTab('safety')">Safety</button>
+    </div>
+
+    <!-- HIGH REACH -->
+    <div id="highreach" class="tab-content active">
+
+        <h2>High Reach</h2>
+        <hr style="height: 2px; background: black; border: none;">
+
+        <h3>Carnegie Mellon University</h3>
+        <h4>Degree: Ph. D. in Machine Learning</h4>
+        <h5>Potential interest in Statistics/Machine Learning Joint Ph.D. Degree</h5>
+
+        <h4>Research Faculty:</h4>
+        <ul>
+            <li>Ann B Lee, <a href="https://www.stat.cmu.edu/~annlee/">Machine Learning for Science</a></li>
+            <li>Tim Dettmers, <a href="https://timdettmers.com/about/">AI Agents</a></li>
+            <li>Ameet Talwalkar, <a href="https://www.cs.cmu.edu/~atalwalk/">AI for Science & AI Agents</a></li>
+        </ul>
+
+        <a href="https://ml.cmu.edu/people/core-faculty">Professors list for Machine Learning</a>
+
+        <h4>Applications Open: September 9, 2026</h4>
+        <h4>Early Application Deadline: November 18, 2026</h4>
+        <h4>Final Application Deadline: December 9, 2026</h4>
+
+        <h4>Requirements:</h4>
+        <ul>
+            <li>Resume/CV</li>
+            <li>Three Letters of Recommendation</li>
+            <li>SOP 2 page maximum</li>
+        </ul>
+
+        <h4>Application Fee: $100</h4>
+
+        <hr/>
+
+        <h3>Massachusetts Institute of Technology</h3>
+        <h4>Degree: Ph. D. in Electrical Engineering and Computer Science</h4>
+
+        <ul>
+            <li>placeholder <a href="https://serinachang5.github.io/">AI for Science</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~pabbeel/">Deep and Reinforcement Learning</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~kanazawa/">Computer Vision</a></li>
+        </ul>
+
+        <h4>Applications Open: September 15, 2026</h4>
+        <h4>Application Deadline: December 1, 2026</h4>
+
+        <h4>Requirements:</h4>
+        <ul>
+            <li>Bachelor's Degree</li>
+            <li>Three letters of recommendation</li>
+            <li>2 essays:
+                <ul>
+                    <li>Research Activities and Goals</li>
+                    <li>Academic and Intellectual Journey</li>
+                </ul>
+            </li>
+        </ul>
+
+        <a href="https://mitcommlab.mit.edu/eecs/commkit/graduate-school-statement-of-purpose/">
+            Information for writing the essays
+        </a>
+        <br>
+
+   
+
+        <h4>Application Fee: $90</h4>
+
+        <hr/>
+
+        <h3>University of California, Berkeley</h3>
+        <h4>Degree: Ph. D in Computer Science (AI)</h4>
+
+        <h4>Research Faculty:</h4>
+        <ul>
+            <li>Serina Chang, <a href="https://serinachang5.github.io/">AI for Science</a></li>
+            <li>Pieter Abbeel, <a href="https://people.eecs.berkeley.edu/~pabbeel/">Deep and Reinforcement Learning</a></li>
+            <li>Angjoo Kanazawa, <a href="https://people.eecs.berkeley.edu/~kanazawa/">Computer Vision</a></li>
+        </ul>
+
+        <a href="https://bair.berkeley.edu/resources/admissions">
+            Researchers and their areas in AI specifically
+        </a>
+
+        <h4>Applications Open: September 2026</h4>
+        <h4>Deadline: December 1, 2026</h4>
+
+        <h4>Requirements:</h4>
+        <ul>
+            <li>Bachelor's Degree</li>
+            <li>Minimum GPA of 3.0</li>
+            <li>Three Letters of Recommendation</li>
+            <li>Resume/CV</li>
+        </ul>
+
+        <h4>Application Fee: $135</h4>
+
+    </div>
+
+    <!-- HIGH MID REACH -->
+    <div id="highmid" class="tab-content">
+
+        <h2>High-Mid Reach</h2>
+        <hr style="height: 2px; background: black; border: none;">
+
+        <h3>University of California, San Diego</h3>
+        <h4>Degree: Computer Science and Engineering</h4>
+
+        <h4>Research Faculty:</h4>
+        <ul>
+            <li>placeholder <a href="https://serinachang5.github.io/">AI for Science</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~pabbeel/">Deep and Reinforcement Learning</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~kanazawa/">Computer Vision</a></li>
+        </ul>
+
+        <a href="https://bair.berkeley.edu/resources/admissions">placeholder</a>
+
+        <h4>Applications Open: September 3, 2026</h4>
+        <h4>Deadline: December 23, 2026</h4>
+
+        <h4>Requirements:</h4>
+        <ul>
+            <li>Bachelor's Degree</li>
+            <li>Minimum GPA of 3.0</li>
+            <li>Three Letters of Recommendation</li>
+            <li>Resume/CV</li>
+        </ul>
+
+        <h4>Application Fee: $135</h4>
+
+        <hr/>
+
+        <h3>University of Texas at Austin</h3>
+        <h4>Degree: Computer Science</h4>
+		<h4>Research Faculty:</h4>
+        <ul>
+            <li>placeholder <a href="https://serinachang5.github.io/">AI for Science</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~pabbeel/">Deep and Reinforcement Learning</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~kanazawa/">Computer Vision</a></li>
+        </ul>
+
+        <a href="https://bair.berkeley.edu/resources/admissions">placeholder</a>
+
+        <h4>Applications Open: October 15, 2026</h4>
+        <h4>Deadline: December 15, 2026</h4>
+		<h4>PhD Admissions Decision Released: March 30, 2026 </h4>
+
+        <h4>Requirements:</h4>
+        <ul>
+            <li>Bachelor's Degree</li>
+            <li>Minimum GPA of 3.0</li>
+            <li>Three Letters of Recommendation</li>
+            <li>Resume/CV</li>
+        </ul>
+
+        <h4>Application Fee: $65</h4>
+
+        <hr/>
+
+        <h3>University of Washington</h3>
+        <h4>Degree: Computer Science & Engineering</h4>
+		<h4>Research Faculty:</h4>
+        <ul>
+            <li>placeholder <a href="https://serinachang5.github.io/">AI for Science</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~pabbeel/">Deep and Reinforcement Learning</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~kanazawa/">Computer Vision</a></li>
+        </ul>
+
+        <a href="https://bair.berkeley.edu/resources/admissions">placeholder</a>
+
+        <h4>Applications Open: September 1, 2026</h4>
+        <h4>Deadline: December 15, 2026</h4>
+		<h4>PhD Admissions Decision Released: mid-February 2026 </h4>
+
+        <h4>Requirements:</h4>
+        <ul>
+            <li>Bachelor's Degree</li>
+            <li>Minimum GPA of 3.0</li>
+            <li>Three Letters of Recommendation</li>
+            <li>Resume/CV</li>
+        </ul>
+
+        <h4>Application Fee: $90</h4>
+        
+
+    
+
+    </div>
+
+    <!-- MID REACH -->
+    <div id="mid" class="tab-content">
+        <h2>Mid Reach</h2>
+        <hr style="height: 2px; background: black; border: none;">
+        <h3>UMass Amherst</h3>
+        <h4>Degree: </h4>
+
+        <h4>Research Faculty:</h4>
+        <ul>
+            <li>placeholder <a href="https://serinachang5.github.io/">AI for Science</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~pabbeel/">Deep and Reinforcement Learning</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~kanazawa/">Computer Vision</a></li>
+        </ul>
+
+        <a href="https://bair.berkeley.edu/resources/admissions">placeholder</a>
+
+        <h4>Applications Open: September 3, 2026</h4>
+        <h4>Deadline: December 23, 2026</h4>
+
+        <h4>Requirements:</h4>
+        <ul>
+            <li>Bachelor's Degree</li>
+            <li>Minimum GPA of 3.0</li>
+            <li>Three Letters of Recommendation</li>
+            <li>Resume/CV</li>
+        </ul>
+
+        <h4>Application Fee: $</h4>
+
+        <hr/>
+
+        <h3>University of Michigan</h3>
+        <h4>Degree: </h4>
+		<h4>Research Faculty:</h4>
+        <ul>
+            <li>placeholder <a href="https://serinachang5.github.io/">AI for Science</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~pabbeel/">Deep and Reinforcement Learning</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~kanazawa/">Computer Vision</a></li>
+        </ul>
+
+        <a href="https://bair.berkeley.edu/resources/admissions">placeholder</a>
+
+        <h4>Applications Open: October 15, 2026</h4>
+        <h4>Deadline: December 15, 2026</h4>
+		<h4>PhD Admissions Decision Released: March 30, 2026 </h4>
+
+        <h4>Requirements:</h4>
+        <ul>
+            <li>Bachelor's Degree</li>
+            <li>Minimum GPA of 3.0</li>
+            <li>Three Letters of Recommendation</li>
+            <li>Resume/CV</li>
+        </ul>
+
+        <h4>Application Fee: $</h4>
+
+        <hr/>
+
+        <h3>Georgia Tech</h3>
+        <h4>Degree: </h4>
+		<h4>Research Faculty:</h4>
+        <ul>
+            <li>placeholder <a href="https://serinachang5.github.io/">AI for Science</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~pabbeel/">Deep and Reinforcement Learning</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~kanazawa/">Computer Vision</a></li>
+        </ul>
+
+        <a href="https://bair.berkeley.edu/resources/admissions">placeholder</a>
+
+        <h4>Applications Open: September 1, 2026</h4>
+        <h4>Deadline: December 15, 2026</h4>
+		<h4>PhD Admissions Decision Released: mid-February 2026 </h4>
+
+        <h4>Requirements:</h4>
+        <ul>
+            <li>Bachelor's Degree</li>
+            <li>Minimum GPA of 3.0</li>
+            <li>Three Letters of Recommendation</li>
+            <li>Resume/CV</li>
+        </ul>
+
+        <h4>Application Fee: $</h4>
+    </div>
+
+    <!-- SAFETY -->
+    <div id="safety" class="tab-content">
+        <h2>Safety Schools</h2>
+        <hr style="height: 2px; background: black; border: none;">
+        <h3>Oregon State</h3>
+        <h4>Degree: Computer Science and Engineering</h4>
+
+        <h4>Research Faculty:</h4>
+        <ul>
+            <li>placeholder <a href="https://serinachang5.github.io/">AI for Science</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~pabbeel/">Deep and Reinforcement Learning</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~kanazawa/">Computer Vision</a></li>
+        </ul>
+
+        <a href="https://bair.berkeley.edu/resources/admissions">placeholder</a>
+
+        <h4>Applications Open: September 3, 2026</h4>
+        <h4>Deadline: December 23, 2026</h4>
+
+        <h4>Requirements:</h4>
+        <ul>
+            <li>Bachelor's Degree</li>
+            <li>Minimum GPA of 3.0</li>
+            <li>Three Letters of Recommendation</li>
+            <li>Resume/CV</li>
+        </ul>
+
+        <h4>Application Fee: $</h4>
+
+        <hr/>
+
+        <h3>University of Wisconsin-Madison</h3>
+        <h4>Degree: Computer Science</h4>
+		<h4>Research Faculty:</h4>
+        <ul>
+            <li>placeholder <a href="https://serinachang5.github.io/">AI for Science</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~pabbeel/">Deep and Reinforcement Learning</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~kanazawa/">Computer Vision</a></li>
+        </ul>
+
+        <a href="https://bair.berkeley.edu/resources/admissions">placeholder</a>
+
+        <h4>Applications Open: October 15, 2026</h4>
+        <h4>Deadline: December 15, 2026</h4>
+		<h4>PhD Admissions Decision Released: March 30, 2026 </h4>
+
+        <h4>Requirements:</h4>
+        <ul>
+            <li>Bachelor's Degree</li>
+            <li>Minimum GPA of 3.0</li>
+            <li>Three Letters of Recommendation</li>
+            <li>Resume/CV</li>
+        </ul>
+
+        <h4>Application Fee: $</h4>
+
+        <hr/>
+
+        <h3>UIUC</h3>
+        <h4>Degree: Computer Science & Engineering</h4>
+		<h4>Research Faculty:</h4>
+        <ul>
+            <li>placeholder <a href="https://serinachang5.github.io/">AI for Science</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~pabbeel/">Deep and Reinforcement Learning</a></li>
+            <li>placeholder <a href="https://people.eecs.berkeley.edu/~kanazawa/">Computer Vision</a></li>
+        </ul>
+
+        <a href="https://bair.berkeley.edu/resources/admissions">placeholder</a>
+
+        <h4>Applications Open: September 1, 2026</h4>
+        <h4>Deadline: December 15, 2026</h4>
+		<h4>PhD Admissions Decision Released: mid-February 2026 </h4>
+
+        <h4>Requirements:</h4>
+        <ul>
+            <li>Bachelor's Degree</li>
+            <li>Minimum GPA of 3.0</li>
+            <li>Three Letters of Recommendation</li>
+            <li>Resume/CV</li>
+        </ul>
+
+        <h4>Application Fee: $</h4>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+
+</body>
 </html>
